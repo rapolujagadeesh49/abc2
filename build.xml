@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<project name="vtforce" default="run">
+<target name="info"> 
+<echo>welcome to info block</echo>
+</target>
+<target name="clean" depends="info"> 
+<echo>welcome to clean block</echo>
+<delete dir="./classes"/>
+</target>
+<target name="compile" depends="clean"> 
+<echo>welcome to compile block</echo>
+<mkdir dir="./classes"/>
+<javac srcdir="./java" destdir="./classes"/>
+</target>
+<target name="jar" depends="compile"> 
+<echo>welcome to jar block</echo>
+<mkdir dir="./jar"/>
+<jar destfile="./jar/Helloworld.jar"
+basedir="./classes">
+<manifest>
+ <attribute name="Main-class" value="Demo"/>
+</manifest>
+</jar>
+</target>
+<target name="run" depends="jar"> 
+<echo>welcome to run block</echo>
+<java jar="./jar/Helloworld.jar" fork="true"/>
+</target>
+</project>
+
